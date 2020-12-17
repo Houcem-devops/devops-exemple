@@ -12,7 +12,7 @@ spec:
         name: mysp
     spec:
       containers:
-      - image: houcemserver/sp:14
+      - image: houcemserver/sp
         name: mysp
         ports:
         - name: mysp
