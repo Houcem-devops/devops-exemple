@@ -1,36 +1,34 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    name: mysp
-  name: mysp
-spec:
-  replicas: 3
-  template:
-    metadata:
-      labels:
-        name: mysp
-    spec:
-      containers:
-      - image: houcemserver/sp
-        name: mysp
-        ports:
-        - name: mysp
-          containerPort: 2222    
-          
----
-# Node Port Service
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    name: mysp
-  name: mysp
+ name: mysp
 spec:
-  type: NodePort
-  ports:
-    - port: 2222
-      targetPort: 2222
-  selector:
-    name: mysp
+ type: NodePort
+ ports:
+ - port: 2222
+   targetPort: 2222
+ selector:
+   app: mysp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: mysp
+spec:
+ replicas: 3
+ selector:
+   matchLabels:
+     app: mysp
+ template:
+   metadata:
+     labels:
+       app: mysp
+   spec:
+     containers:
+     - name: mysp
+       image: houcemserver/sp
+       ports:
+       - containerPort: 8080
+
+
 
