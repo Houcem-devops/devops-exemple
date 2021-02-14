@@ -21,7 +21,7 @@ node {
 
    stage('SonarQube analysis') {
         withSonarQubeEnv {
-            sh ''${mvnHome}/bin/mvn' clean package sonar:sonar'
+            sh "'${mvnHome}/bin/mvn' clean package sonar:sonar"
         }
     }
     
