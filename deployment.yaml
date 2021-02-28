@@ -1,31 +1,31 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: mysppod
+ name: mysppod1
 spec:
  type: NodePort
  ports:
  - port: 2222
    targetPort: 2222
  selector:
-   app: mysppod
+   app: mysppod1
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: mysppod
+ name: mysppod1
 spec:
  replicas: 1
  selector:
    matchLabels:
-     app: mysppod
+     app: mysppod1
  template:
    metadata:
      labels:
-       app: mysppod
+       app: mysppod1
    spec:
      containers:
-     - name: myspod
+     - name: myspod1
        image: houcemserver/sp
        ports:
        - containerPort: 8080
