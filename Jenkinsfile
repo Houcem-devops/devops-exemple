@@ -19,16 +19,6 @@ node {
       //mvnHome = tool 'maven-3.5.2'
     }    
 
-   stage('SonarQube analysis') {
-        withSonarQubeEnv {
-            sh "'${mvnHome}/bin/mvn' clean package sonar:sonar"
-        }
-    }
-    
-   stage('Quality Gate') {
-      waitForQualityGate abortPipeline:true
-      
-    }
     
    stage('Build Project') {
       // build project via maven
