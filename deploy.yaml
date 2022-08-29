@@ -26,7 +26,7 @@ spec:
    spec:
      containers:
      - name: myspod1
-       image: houcemserver/sp
+       image: houcemserver/devopsexp:16
        ports:
        - containerPort: 8080
 
