@@ -1,0 +1,15 @@
+---
+- name: Pipeline Jenkins
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: build image docker
+      docker_image:
+        build:
+          path: .
+        name: houcemserver/devopsexp
+        tag: {{tag}}
+        push: true
+        source: build
